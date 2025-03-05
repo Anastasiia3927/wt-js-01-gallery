@@ -1,24 +1,10 @@
-const images = document.querySelectorAll(".gallery-item");
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modalImg");
-const closeBtn = document.getElementById("close");
-
-// Відкриття модального вікна
-images.forEach(img => {
-    img.addEventListener("click", function () {
-        modal.style.display = "flex";
-        modalImg.src = this.src;
+document.addEventListener("DOMContentLoaded", function () {
+    let lightbox = new SimpleLightbox('.gallery a', {
+        captions: true,        // Включити підписи
+        captionsData: "alt",   // Брати підписи з атрибута alt
+        captionDelay: 250,     // Затримка відображення підпису
+        enableKeyboard: true,  // Гортання клавішами
+        close: true,           // Кнопка закриття
+        showCounter: true      // Лічильник (2/9)
     });
-});
-
-// Закриття модального вікна
-closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-});
-
-// Закриття модального вікна при натисканні Escape
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-        modal.style.display = "none";
-    }
 });
